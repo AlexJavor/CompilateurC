@@ -9,10 +9,10 @@
     char* str;
 }
 
-%token tPLUS 
-%token tMINUS 
-%token tTIMES 
-%token tSLASH 
+%left tPLUS tMINUS
+%left tTIMES tSLASH
+/* */
+
 %token tSEMICOLON 
 %token tPO 
 %token tPF 
@@ -26,33 +26,58 @@
 %token tGTR 
 %token tLEQ 
 %token tGEQ 
-%token tTAB 
-%token tNEWLINE 
-%token tSPACE 
 %token tCONST 
 %token tPRINTF 
 %token tTYPE 
-%token tENTIER
+%token <nb> tENTIER
 %token tIF
 %token tELSE
 %token tWHILE
-%token tID
+%token <str> tID
+
+%type <nb> Expression
 %%
 %start File;
 File:
     Main;
 Main:
-    tINT tMAIN tPO tPF tAO Body tAF;
+    tTYPE tID tPO tPF Body ;
 Body:
+    tAO Instructions tAF;
+
+Instructions: 
+    Instruction Instructions 
+    | Instruction;
+
+Instruction: 
+    InstructionBody tSEMICOLON ;
+    /*| BlockIf
+    | BlockWhile;*/
+
+InstructionBody:
     Definition
     | Affectation;
+
 Definition:
-    tINT tID DefinitionN tPV; 
+    tTYPE tID DefinitionN
+    | tTYPE tID tAFF Expression DefinitionN;
+
 DefinitionN:
     /*vide*/
-    | tVR tID DefinitionN;
+    | tCOMMA tID DefinitionN
+    | tCOMMA tID tAFF Expression DefinitionN;
+
 Affectation:
-    tID tEQ tPV;
+    tID tAFF Expression;
+
+Expression:
+    tENTIER
+    | tPO Expression tPF
+    | Expression tPLUS Expression { $$ = $1 + $3}
+    | Expression tMINUS Expression
+    | Expression tTIMES Expression
+    | Expression tSLASH Expression;
+
 %%
 void yyerror(char*str){printf("Low terrain, pull up\n");};
 int main(){
