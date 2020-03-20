@@ -1,5 +1,6 @@
 %{
     #include <stdio.h>
+    #include "symbol_table.h"
     int yylex();
     void yyerror(char*str);
 %}
@@ -27,7 +28,7 @@
 %token tCONST 
 %token tPRINTF 
 %token tTYPE 
-%token <nb> tENTIER
+%token <nb> tENTIER 
 %token tIF
 %token tELSE
 %token tWHILE
@@ -44,7 +45,7 @@ Main:
     tTYPE tID tPO tPF Body ;
 
 Body:
-    tAO Instructions tAF;
+    tAO {increase_depth();} Instructions tAF {decrease_depth();};
 
 Instructions: 
     Instruction Instructions 
@@ -63,18 +64,26 @@ InstructionBody:
     ;
 
 Definition:
-    tTYPE tID DefinitionN
-    | tTYPE tID tAFF Expression DefinitionN
+    tTYPE tID {add_symbol($2, 0, 0);} DefinitionN
+    | tTYPE tID tAFF Expression {add_symbol($2, 0, 1);} DefinitionN
+    | tCONST tTYPE tID {add_symbol($3, 1, 0);} DefinitionConst
+    | tCONST tTYPE tID tAFF Expression {add_symbol($3, 1, 1);} DefinitionConst
     ;
 
 DefinitionN:
     /*vide*/
-    | tCOMMA tID DefinitionN
-    | tCOMMA tID tAFF Expression DefinitionN
+    | tCOMMA tID {add_symbol($2, 0, 0);} DefinitionN
+    | tCOMMA tID tAFF Expression {add_symbol($2, 0, 1);} DefinitionN
+    ;
+
+DefinitionConst:
+    /*vide*/
+    | tCOMMA tID {add_symbol($2, 1, 0);} DefinitionConst
+    | tCOMMA tID tAFF Expression {add_symbol($2, 1, 1);} DefinitionConst
     ;
 
 Affectation:
-    tID tAFF Expression;
+    tID tAFF Expression { affectation_symbol($1); };
 
 Expression:
     tENTIER { $$ = $1; }
