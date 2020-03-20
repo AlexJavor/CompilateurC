@@ -4,14 +4,12 @@
     void yyerror(char*str);
 %}
 
-%union{
-    int nb;
-    char* str;
-}
+%union{int nb; char* str;}
+
+%start File;
 
 %left tPLUS tMINUS
 %left tTIMES tSLASH
-/* */
 
 %token tSEMICOLON 
 %token tPO 
@@ -36,47 +34,56 @@
 %token <str> tID
 
 %type <nb> Expression
+
 %%
-%start File;
+
 File:
     Main;
+
 Main:
     tTYPE tID tPO tPF Body ;
+
 Body:
     tAO Instructions tAF;
 
 Instructions: 
     Instruction Instructions 
-    | Instruction;
+    | Instruction
+    ;
 
 Instruction: 
     InstructionBody tSEMICOLON ;
     /*| BlockIf
-    | BlockWhile;*/
+    | BlockWhile
+    ;*/
 
 InstructionBody:
     Definition
-    | Affectation;
+    | Affectation
+    ;
 
 Definition:
     tTYPE tID DefinitionN
-    | tTYPE tID tAFF Expression DefinitionN;
+    | tTYPE tID tAFF Expression DefinitionN
+    ;
 
 DefinitionN:
     /*vide*/
     | tCOMMA tID DefinitionN
-    | tCOMMA tID tAFF Expression DefinitionN;
+    | tCOMMA tID tAFF Expression DefinitionN
+    ;
 
 Affectation:
     tID tAFF Expression;
 
 Expression:
-    tENTIER
-    | tPO Expression tPF
-    | Expression tPLUS Expression { $$ = $1 + $3}
-    | Expression tMINUS Expression
-    | Expression tTIMES Expression
-    | Expression tSLASH Expression;
+    tENTIER { $$ = $1; }
+    | tPO Expression tPF { $$ = ($2); }
+    | Expression tPLUS Expression { $$ = $1 + $3; }
+    | Expression tMINUS Expression { $$ = $1 - $3; } 
+    | Expression tTIMES Expression { $$ = $1 * $3; }
+    | Expression tSLASH Expression { $$ = $1 / $3; }
+    ;
 
 %%
 void yyerror(char*str){printf("Low terrain, pull up\n");};

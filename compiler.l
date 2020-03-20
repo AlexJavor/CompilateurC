@@ -42,4 +42,4 @@ void erreur() {
 	printf("Error");
 }
 int yywrap(void) {return 1;}
-int main () {while(yylex()!=0);return 0;} 
+//int main () {while(yylex()!=0);return 0;} 
