@@ -1,0 +1,13 @@
+int main() {
+    int jambon = 3;
+    int b, c, d =8;
+    jambon = 1;
+    b=2;
+    c=3;
+    d=4;
+    b = c + d;    
+    d = d - 1;
+    d = 1000 / 2;
+    b = jambon * c;
+}
+

@@ -1,13 +1,28 @@
 #include "symbol_table.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
+// Global variable table
+symbol_table *table; // = (symbol_table*)malloc(SYMBOLTABLE_SIZE*(sizeof(symbol_var)+sizeof(int)))
 int depth = 0; 
 
+void printsymbolTable(){
+    for(int i = 0; i <= SYMBOLTABLE_SIZE; i++){
+        printf("Symbol Table : %d : %s \n", i, table->symbolarray[i].name);
+    }
+}
+
 void init_table(){
+    printf("coucou\n");
+    table = (symbol_table*)malloc(SYMBOLTABLE_SIZE*(sizeof(symbol_var)+sizeof(int)));
     int i;
     for(i = 0; i <= SYMBOLTABLE_SIZE; i++){
+        printf("coucou : %d <= %d \n", i, SYMBOLTABLE_SIZE);
         table->symbolarray[i].init = -1;
     }
     table->last_symbol = -1;
+    printf("Table initialized \n");
 }
 
 void add_symbol(char* name, int constant, int init){
@@ -19,6 +34,7 @@ void add_symbol(char* name, int constant, int init){
     table->symbolarray[last_symbol].init     = init;
     table->symbolarray[last_symbol].address  = table->last_symbol;
     table->symbolarray[last_symbol].depth    = depth;
+    printsymbolTable();
 }
 
 int find_symbol_by_name(char* name){
@@ -29,6 +45,7 @@ int find_symbol_by_name(char* name){
     	if(strcmp(table->symbolarray[i].name, name) == 0){ index = i; }
     	i--;
     }
+    printf("Find symbole : Indice = %d \n", index);
     return index;
 }
 
@@ -42,6 +59,7 @@ void decrease_depth(){
         table->symbolarray[i].init = -1;
         i--; 
     }
+    printf("Decrease depth : depth = %d; init de l'ancienne case = %d \n", depth, table->symbolarray[depth+1].init);
 }
 
 void affectation_symbol(char* name){
@@ -51,4 +69,6 @@ void affectation_symbol(char* name){
     } else {
         table->symbolarray[id].init = 1;
     }
+    printf("symbole affected\n");
 }
+

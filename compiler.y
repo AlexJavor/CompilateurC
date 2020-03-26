@@ -65,21 +65,21 @@ InstructionBody:
 
 Definition:
     tTYPE tID {add_symbol($2, 0, 0);} DefinitionN
-    | tTYPE tID tAFF Expression {add_symbol($2, 0, 1);} DefinitionN
+    | tTYPE tID tAFF Expression {add_symbol($2, 0, 1); affectation_symbol($2);} DefinitionN
     | tCONST tTYPE tID {add_symbol($3, 1, 0);} DefinitionConst
-    | tCONST tTYPE tID tAFF Expression {add_symbol($3, 1, 1);} DefinitionConst
+    | tCONST tTYPE tID tAFF Expression {add_symbol($3, 1, 1); affectation_symbol($3);} DefinitionConst
     ;
 
 DefinitionN:
     /*vide*/
     | tCOMMA tID {add_symbol($2, 0, 0);} DefinitionN
-    | tCOMMA tID tAFF Expression {add_symbol($2, 0, 1);} DefinitionN
+    | tCOMMA tID tAFF Expression {add_symbol($2, 0, 1);affectation_symbol($2);} DefinitionN
     ;
 
 DefinitionConst:
     /*vide*/
     | tCOMMA tID {add_symbol($2, 1, 0);} DefinitionConst
-    | tCOMMA tID tAFF Expression {add_symbol($2, 1, 1);} DefinitionConst
+    | tCOMMA tID tAFF Expression {add_symbol($2, 1, 1);affectation_symbol($2);} DefinitionConst
     ;
 
 Affectation:
@@ -87,6 +87,7 @@ Affectation:
 
 Expression:
     tENTIER { $$ = $1; }
+    |tID {$$ = 0;}
     | tPO Expression tPF { $$ = ($2); }
     | Expression tPLUS Expression { $$ = $1 + $3; }
     | Expression tMINUS Expression { $$ = $1 - $3; } 
@@ -97,6 +98,7 @@ Expression:
 %%
 void yyerror(char*str){printf("Low terrain, pull up\n");};
 int main(){
+    init_table();
     yyparse();
     return 0;
 }

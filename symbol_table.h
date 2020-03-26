@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define SYMBOLTABLE_SIZE 100
+#define SYMBOLTABLE_SIZE 10
 
 
 /******************************* symbol_var STRUCT ********************************/
@@ -28,9 +28,6 @@ typedef struct {
     int last_symbol;
     symbol_var symbolarray[SYMBOLTABLE_SIZE];
 } symbol_table;
-
-// Global variable table
-symbol_table *table;
 
 void init_table();
 void add_symbol(char* name, int constant, int init);
