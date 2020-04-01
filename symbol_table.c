@@ -6,6 +6,7 @@
 // Global variable table
 symbol_table *table; // = (symbol_table*)malloc(SYMBOLTABLE_SIZE*(sizeof(symbol_var)+sizeof(int)))
 int depth = 0;
+int stackId = SYMBOLTABLE_SIZE - 1;
 
 void printsymbolTable() {
     printf("*********************************************\n");
@@ -87,4 +88,21 @@ void affectation_symbol(char *name) {
     }
     printf("symbole affected\n");
     printsymbolTable();
+}
+
+void push(char *name) {
+    table->symbolarray[stackId].name = name;
+    table->symbolarray[stackId].address = stackId;
+    table->symbolarray[stackId].depth = depth;
+    table->symbolarray[stackId].constant = 0;
+    table->symbolarray[stackId].init = 
+    stackId--;
+}
+
+void pop(){
+    if (stackId >= SYMBOLTABLE_SIZE -1){
+        printf("pop impossible \n");
+    } else {
+        stackId++;
+    }
 }
