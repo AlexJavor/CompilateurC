@@ -80,7 +80,7 @@ DefinitionN:
 DefinitionConst:
     /*vide*/
     | tCOMMA tID {add_symbol($2, 1, 0);} DefinitionConst
-    | tCOMMA tID tAFF Expression {add_symbol($2, 1, 1);affectation_symbol($2);} DefinitionConst
+    | tCOMMA tID tAFF Expression { add_symbol($2, 1, 1); affectation_symbol($2); } DefinitionConst
     ;
 
 Affectation:
