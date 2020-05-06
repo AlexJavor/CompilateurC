@@ -1,0 +1,16 @@
+int main() {
+    int a;
+    a = 3;
+    int b = 5;
+    int c; 
+    c = a + b;
+    printf(c);
+    int d;
+    if(c == a){
+        d = a - b;
+    } else {
+        d = a * b;
+    }
+    d = 4;
+}
+

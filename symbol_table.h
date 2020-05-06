@@ -2,38 +2,43 @@
 #define SYMBOLTABLE_H
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
-#define SYMBOLTABLE_SIZE 10
-
+#define SYMBOLTABLE_SIZE 200
 
 /******************************* symbol_var STRUCT ********************************/
 /* name     : symbol name                                                         */
 /* constant : 0 => variable, 1 => constant                                        */
 /* init     : -1 => not used, 0 => declared but not initialized, 1 => initialized */
-/* address  : variable address in memory                                          */
 /* depth    : 0 => global depth                                                   */
 /**********************************************************************************/
-
 typedef struct {
-    char* name;
+    char * name;
     int constant;
     int init;
-    int address;
     int depth;
 } symbol_var;
 
-typedef struct {
-    //int nb_offset;
-    int last_symbol;
-    symbol_var symbolarray[SYMBOLTABLE_SIZE];
-} symbol_table;
+/* Add a new symbol to the table of symbols */
+void add_symbol(char * name, int constant, int init);
 
-void init_table();
-void add_symbol(char* name, int constant, int init);
-int  find_symbol_by_name(char* name);
+/* Find a symbol by providing its name */
+int find_symbol_by_name(char * name);
+
+/* Increase the depth by 1 */
 void increase_depth();
+
+/* Decrease the depth by 1 */
 void decrease_depth();
-void affectation_symbol(char* name);
+
+/* If it is not constant, change the value of the variable */
+void affectation_symbol(char * name);
+
+/* Add a new symbole to the top of the stack */
+int push();
+
+/* Delete the symbol situated at the top of the stack */
+int pop();
 
 #endif
