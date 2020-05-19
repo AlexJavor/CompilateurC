@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="warning" file="HDLCompiler" num="871" delta="old" >"C:\Users\antho\Processor\CheminDonnees.vhd" Line 187: Using initial value <arg fmt="%s" index="1">&quot;00000000&quot;</arg> for <arg fmt="%s" index="2">c_in_ppl_exmem</arg> since it is never assigned
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="871" delta="old" >"C:\Users\antho\Processor\CheminDonnees.vhd" Line 200: Using initial value <arg fmt="%s" index="1">&quot;00000000&quot;</arg> for <arg fmt="%s" index="2">c_in_ppl_memre</arg> since it is never assigned
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\antho\Processor\CheminDonnees.vhd</arg>&quot; line <arg fmt="%d" index="2">214</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">alu_inst</arg>&gt; of block &lt;<arg fmt="%s" index="4">ALU</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">CheminDonnees</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\antho\Processor\CheminDonnees.vhd</arg>&quot; line <arg fmt="%d" index="2">226</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">bmi</arg>&gt; of block &lt;<arg fmt="%s" index="4">BancMemoireInstruction</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">CheminDonnees</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\antho\Processor\CheminDonnees.vhd</arg>&quot; line <arg fmt="%d" index="2">234</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">br</arg>&gt; of block &lt;<arg fmt="%s" index="4">BancRegistres</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">CheminDonnees</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\antho\Processor\CheminDonnees.vhd</arg>&quot; line <arg fmt="%d" index="2">247</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">bm</arg>&gt; of block &lt;<arg fmt="%s" index="4">BancMemoire</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">CheminDonnees</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\antho\Processor\CheminDonnees.vhd</arg>&quot; line <arg fmt="%d" index="2">257</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">ppl_lidi</arg>&gt; of block &lt;<arg fmt="%s" index="4">Pipeline</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">CheminDonnees</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\antho\Processor\CheminDonnees.vhd</arg>&quot; line <arg fmt="%d" index="2">270</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">ppl_diex</arg>&gt; of block &lt;<arg fmt="%s" index="4">Pipeline</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">CheminDonnees</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\antho\Processor\CheminDonnees.vhd</arg>&quot; line <arg fmt="%d" index="2">283</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">ppl_exmem</arg>&gt; of block &lt;<arg fmt="%s" index="4">Pipeline</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">CheminDonnees</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\antho\Processor\CheminDonnees.vhd</arg>&quot; line <arg fmt="%d" index="2">296</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">ppl_memre</arg>&gt; of block &lt;<arg fmt="%s" index="4">Pipeline</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">CheminDonnees</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\antho\Processor\CheminDonnees.vhd</arg>&quot; line <arg fmt="%s" index="2">214</arg>: Output port &lt;<arg fmt="%s" index="3">N_Flag</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">alu_inst</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\antho\Processor\CheminDonnees.vhd</arg>&quot; line <arg fmt="%s" index="2">214</arg>: Output port &lt;<arg fmt="%s" index="3">O_Flag</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">alu_inst</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\antho\Processor\CheminDonnees.vhd</arg>&quot; line <arg fmt="%s" index="2">214</arg>: Output port &lt;<arg fmt="%s" index="3">Z_Flag</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">alu_inst</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\antho\Processor\CheminDonnees.vhd</arg>&quot; line <arg fmt="%s" index="2">214</arg>: Output port &lt;<arg fmt="%s" index="3">C_Flag</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">alu_inst</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\antho\Processor\CheminDonnees.vhd</arg>&quot; line <arg fmt="%s" index="2">283</arg>: Output port &lt;<arg fmt="%s" index="3">C_OUT</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">ppl_exmem</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">C:\Users\antho\Processor\CheminDonnees.vhd</arg>&quot; line <arg fmt="%s" index="2">296</arg>: Output port &lt;<arg fmt="%s" index="3">C_OUT</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">ppl_memre</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+</messages>
+

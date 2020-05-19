@@ -1,0 +1,29 @@
+Command line:
+   Test_CheminDonnees_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  63335
+
+Tue May 19 11:00:37 2020
+
+
+ Elaboration Time: 0.0625 sec
+
+ Current Memory Usage: 5172.71 Meg
+
+ Total Signals          : 125
+ Total Nets             : 10783
+ Total Signal Drivers   : 58
+ Total Blocks           : 16
+ Total Primitive Blocks : 14
+ Total Processes        : 46
+ Total Traceable Variables  : 19
+ Total Scalar Nets and Variables : 11806
+Total Line Count : 82
+
+ Total Simulation Time: 0.296875 sec
+
+ Current Memory Usage: 4858.14 Meg
+
+Tue May 19 11:20:42 2020
+
