@@ -1,16 +1,16 @@
 int main() {
-    int a;
+    int a, b;
     a = 3;
-    int b = 5;
-    int c; 
-    c = a + b;
+    b = 5;
+    int c = a + b;
     printf(c);
     int d;
+    d = 79;
     if(c == a){
         d = a - b;
+        printf(d);
     } else {
         d = a * b;
     }
-    d = 4;
+    printf(d);
 }
-

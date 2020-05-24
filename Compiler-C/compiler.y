@@ -125,6 +125,10 @@ Expression:
                                     int expr1=pop();
                                     int operator[3] = {push(), expr1, expr2};
                                     add_instruct("DIV", 3, operator);}
+    | Expression tEQL Expression {int expr2=pop(); 
+                                  int expr1=pop(); 
+                                  int operator[3] = {push(), expr1, expr2};
+                                  add_instruct("EQU", 3, operator);}
     | Expression tGTR Expression {int expr2=pop(); 
                                   int expr1=pop(); 
                                   int operator[3] = {push(), expr1, expr2};
@@ -133,38 +137,31 @@ Expression:
                                   int expr1=pop();
                                   int operator[3] = {push(), expr1, expr2}; 
                                   add_instruct("INF", 3, operator);}
-	| Expression tEQL Expression {int expr2=pop(); 
-                                  int expr1=pop(); 
-                                  int operator[3] = {push(), expr1, expr2};
-                                  add_instruct("EQU", 3, operator);}
     ;
 
 /**************************** Structures Conditionalles (Block if) **********************************/
 BlockIf: 
-    tIF tPO Expression tPF Then                              // Block if seul
+    tIF tPO Expression tPF Then                       // Block if seul
     	Body {patch($5, get_next_asm_line(), 1);} 
     
-    | tIF tPO Expression tPF Then                            // Block if + else
-    	Body 
-    	tELSE {patch($5, get_next_asm_line()+1, 1);
-    		   int operator[1]={-1};
-    		   $1 = get_next_asm_line();
-    		   add_instruct("JMP", 1, operator);} 
-    	Body {patch($1, get_next_asm_line(), 0);}
+    | tIF tPO Expression tPF Then Body                // Block if + else 
+      tELSE {patch($5, get_next_asm_line()+1, 1);     // on remplace le "-1" par le numéro de la ligne suivante
+             int operator[1]={-1};
+             $1 = get_next_asm_line();
+             add_instruct("JMP", 1, operator);} 
+      Body {patch($1, get_next_asm_line(), 0);}
     ;
 
 Then:
-	{int operator[2]={pop(), -1};
+	{int operator[2]={pop(), -1};            // le "-1" ici sert à occuper de la place. $1 mémorise la ligne de où se trouve JMF;
      $$ = get_next_asm_line();
      add_instruct("JMF", 2, operator);}
     ;
 
 /**************************************** Print function *******************************************/
-Printf: 
-    tPRINTF tPO Expression tPF {int operator[1] = {pop()};
-						        add_instruct("PRI", 1, operator);}
-    | tPRINTF tPO tID tPF {int operator[1] = {pop()};
-						   add_instruct("PRI", 1, operator);}
+Printf:
+    tPRINTF tPO tID tPF {int operator[1] = {find_symbol_by_name($3)};
+						 add_instruct("PRI", 1, operator);}
     ;
 
 
@@ -172,8 +169,8 @@ Printf:
 BlockWhile:
 	tWHILE {$1 = get_next_asm_line();} tPO Expression tPF Then
 		Body {int operator[1]={$1}; 
-			  add_instruct("JMP", 1, operator);
-			  patch($6, get_next_asm_line(), 1);}
+              add_instruct("JMP", 1, operator);
+              patch($6, get_next_asm_line(), 1);}
 	;
 
 %%

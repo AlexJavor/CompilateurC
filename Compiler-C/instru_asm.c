@@ -15,6 +15,7 @@ void add_instruct (char cmd[4], int type_cmd, int operator[]){
 	for(int i = 0; i< type_cmd; i++){
 		table_code[index_asm].operator[i] = operator[i];
 	}
+	//printf("Adding instruction: %s %d\n", cmd, operator[0]);
 	index_asm ++;
 }
 
