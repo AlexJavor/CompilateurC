@@ -2,9 +2,9 @@ int main() {
     int a = 1;
     int b = 5;
     while(a < b){
-        a = a + 1;
+        int a = a + 1;
+        printf(a);
     }
     a = b + 4;
     printf(a);
 }
-

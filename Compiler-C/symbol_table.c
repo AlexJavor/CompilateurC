@@ -4,7 +4,7 @@
 symbol_var symbol_table[SYMBOLTABLE_SIZE];
 int depth = 0;
 int last_symbol = -1;
-int stackId = SYMBOLTABLE_SIZE;
+int stackId = 200;
 //**********************************//
 
 void printsymbolTable() {
@@ -73,7 +73,7 @@ void increase_depth(){
 void decrease_depth(){
 	depth--;
 	int i = last_symbol;
-	while((symbol_table[i].depth > depth) && (i < 0)){
+	while((symbol_table[i].depth > depth) && (i >= 0)){
 		symbol_table[i].init = -1;
 		i--;
     }

@@ -32,7 +32,7 @@ void increase_depth();
 /* Decrease the depth by 1 */
 void decrease_depth();
 
-/* If it is not constant, change the value of the variable */
+/* Give or change the value of a symbol providing its name */
 void affectation_symbol(char * name);
 
 /* Add a new symbole to the top of the stack */
