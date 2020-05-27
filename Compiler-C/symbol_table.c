@@ -16,8 +16,8 @@ void printsymbolTable() {
     printf("|Address|Var Name|Constant|Initialized|Depth|\n");
     printf("*********************************************\n");
     for (int i = 0; i <= last_symbol; i++) {
-        printf("|   %d   |   %s    |   %d    |     %d     |  %d  |\n", i, symbol_table[i].name, symbol_table[i].constant, symbol_table[i].init, symbol_table[i].depth);
-        printf("*********************************************\n");
+		printf("|   %d   |   %s    |   %d    |     %d     |  %d  |\n", i, symbol_table[i].name, symbol_table[i].constant, symbol_table[i].init, symbol_table[i].depth);
+		printf("*********************************************\n");
     }
     printf("\n\n");
 }
@@ -55,7 +55,7 @@ void affectation_symbol(char * name){
 	int id = find_symbol_by_name(name);
 	if(id >= 0){
 		if(symbol_table[id].init == 1 && symbol_table[id].constant == 1){
-			printf("Error: Symbol can not be affected! It is a constant already initialized");
+			printf("Error: Symbol can not be affected! It is a constant already initialized\n");
 		} else {
 			symbol_table[id].init = 1;
 			symbol_table[id].depth = depth;

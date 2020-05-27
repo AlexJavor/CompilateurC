@@ -2,7 +2,8 @@ int main() {
     int a, b;
     a = 3;
     b = 5;
-    const int c = a + (b - 7);
+    const int c; 
+    c = a + (b - 7);
     printf(c);
     int d = c * b;
     if(c == a){
