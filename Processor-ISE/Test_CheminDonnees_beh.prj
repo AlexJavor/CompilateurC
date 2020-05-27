@@ -1,7 +1,0 @@
-vhdl work "Pipeline.vhd"
-vhdl work "BancRegistres.vhd"
-vhdl work "BancMemoireInstruction.vhd"
-vhdl work "BancMemoire.vhd"
-vhdl work "ALU.vhd"
-vhdl work "CheminDonnees.vhd"
-vhdl work "Test_CheminDonnees.vhd"
